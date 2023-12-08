@@ -8,6 +8,7 @@ import CartItem from "@/assets/data/classes/CartItem";
 import CartQuantity from "@/assets/data/classes/CartQuantity";
 import CartPrice from "@/assets/data/classes/CartPrice";
 import DeclareStorageVariable from "../storage/DeclareStorageVariable";
+import RemoveStorageVariable from "../storage/RemoveStorageVariable";
 
 function removeDuplicates(array, prop) {
   const UNIQUE_MAP = new Map();
@@ -25,6 +26,14 @@ function removeDuplicates(array, prop) {
   return UNIQUE_ARRAY;
 }
 
+function addingItemsToArray(data, array) {
+  data.forEach((item) => {
+    if (!array.includes(item)) {
+      array.push(item);
+    }
+  });
+}
+
 export default function SaveCartItems(foodData, toyData, housingData) {
   const ALL_FOOD_ITEMS = [];
   const ALL_TOY_ITEMS = [];
@@ -35,40 +44,48 @@ export default function SaveCartItems(foodData, toyData, housingData) {
   const USER_CART_SUBTOTALS = [];
 
   // Adding all type of items to their respected array
-  foodData.forEach((item) => {
-    if (!ALL_FOOD_ITEMS.includes(item)) {
-      ALL_FOOD_ITEMS.push(item);
-    }
-  });
-  toyData.forEach((item) => {
-    if (!ALL_TOY_ITEMS.includes(item)) {
-      ALL_TOY_ITEMS.push(item);
-    }
-  });
-  housingData.forEach((item) => {
-    if (!ALL_HOUSING_ITEMS.includes(item)) {
-      ALL_HOUSING_ITEMS.push(item);
-    }
-  });
+  addingItemsToArray(foodData, ALL_FOOD_ITEMS);
+  addingItemsToArray(toyData, ALL_TOY_ITEMS);
+  addingItemsToArray(housingData, ALL_HOUSING_ITEMS);
+
+  // foodData.forEach((item) => {
+  //   if (!ALL_FOOD_ITEMS.includes(item)) {
+  //     ALL_FOOD_ITEMS.push(item);
+  //   }
+  // });
+  // toyData.forEach((item) => {
+  //   if (!ALL_TOY_ITEMS.includes(item)) {
+  //     ALL_TOY_ITEMS.push(item);
+  //   }
+  // });
+  // housingData.forEach((item) => {
+  //   if (!ALL_HOUSING_ITEMS.includes(item)) {
+  //     ALL_HOUSING_ITEMS.push(item);
+  //   }
+  // });
 
   // Adding all items to one array
-  ALL_FOOD_ITEMS.forEach((item) => {
-    if (!ALL_STORE_ITEMS.includes(item)) {
-      ALL_STORE_ITEMS.push(item);
-    }
-  });
-  ALL_TOY_ITEMS.forEach((item) => {
-    if (!ALL_STORE_ITEMS.includes(item)) {
-      ALL_STORE_ITEMS.push(item);
-    }
-  });
-  ALL_HOUSING_ITEMS.forEach((item) => {
-    if (!ALL_STORE_ITEMS.includes(item)) {
-      ALL_STORE_ITEMS.push(item);
-    }
-  });
+  addingItemsToArray(ALL_FOOD_ITEMS, ALL_STORE_ITEMS);
+  addingItemsToArray(ALL_TOY_ITEMS, ALL_STORE_ITEMS);
+  addingItemsToArray(ALL_HOUSING_ITEMS, ALL_STORE_ITEMS);
+  // ALL_FOOD_ITEMS.forEach((item) => {
+  //   if (!ALL_STORE_ITEMS.includes(item)) {
+  //     ALL_STORE_ITEMS.push(item);
+  //   }
+  // });
+  // ALL_TOY_ITEMS.forEach((item) => {
+  //   if (!ALL_STORE_ITEMS.includes(item)) {
+  //     ALL_STORE_ITEMS.push(item);
+  //   }
+  // });
+  // ALL_HOUSING_ITEMS.forEach((item) => {
+  //   if (!ALL_STORE_ITEMS.includes(item)) {
+  //     ALL_STORE_ITEMS.push(item);
+  //   }
+  // });
 
   // Adding items, item quantities, item prices to respected arrays
+
   ALL_STORE_ITEMS.forEach((item) => {
     if (localStorage.getItem("Item Name: " + item.productName)) {
       if (localStorage.getItem(item.productName + " Quantity")) {
@@ -130,6 +147,12 @@ export default function SaveCartItems(foodData, toyData, housingData) {
   GLOBAL_USER_CART_SUBTOTALS.forEach((subTotal) => {
     grandTotal += subTotal._priceAmount;
   });
+  const CONVERTED_GRAND_TOTAL = grandTotal
+    .toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    })
+    .replace("$", "");
 
   GLOBAL_USER_CART_QUANTITIES.forEach((quantity) => {
     rawQuantities.push(quantity._quantityAmount);
@@ -140,16 +163,39 @@ export default function SaveCartItems(foodData, toyData, housingData) {
     quantityTotal += quantity;
   });
 
-  DeclareStorageVariable(
-    "local",
-    "Cart Data",
-    JSON.stringify(GLOBAL_USER_CART_ITEMS)
-  );
-  DeclareStorageVariable("local", "Cart Quantity", quantityTotal);
-  DeclareStorageVariable("local", "Cart Total Price", grandTotal);
+  // Setting localStorage variables
+  if (GLOBAL_USER_CART_ITEMS.length > 0) {
+    if (localStorage.getItem("Cart Data") === "[Empty]") {
+      RemoveStorageVariable("local", "Cart Data");
+    }
 
-  console.log("Cart Items: ");
-  console.table(GLOBAL_USER_CART_ITEMS);
+    DeclareStorageVariable(
+      "local",
+      "Cart Data",
+      JSON.stringify(GLOBAL_USER_CART_ITEMS)
+    );
+  } else {
+    if (
+      localStorage.getItem("Cart Data") ===
+      JSON.stringify(GLOBAL_USER_CART_ITEMS)
+    ) {
+      RemoveStorageVariable("local", "Cart Data");
+    }
+
+    DeclareStorageVariable("local", "Cart Data", "[Empty]");
+  }
+  DeclareStorageVariable("local", "Cart Quantity", quantityTotal);
+  DeclareStorageVariable("local", "Cart Total Price", CONVERTED_GRAND_TOTAL);
+
+  // Logging cart data
+  // console.log(ALL_STORE_ITEMS);
+  if (localStorage.getItem("Cart Data") !== "[Empty]") {
+    console.log("Cart Items: ");
+    const PARSED_CART_ITEMS = JSON.parse(localStorage.getItem("Cart Data"));
+    console.log(PARSED_CART_ITEMS);
+  } else {
+    console.log("Cart Items: [Empty]");
+  }
   console.log("Cart Quantity: " + quantityTotal);
-  console.log("Cart Grand Total: $" + grandTotal);
+  console.log("Cart Grand Total: $" + CONVERTED_GRAND_TOTAL);
 }
