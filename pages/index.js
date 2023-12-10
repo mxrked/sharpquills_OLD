@@ -100,10 +100,10 @@ export default function Home({
   const router = useRouter();
 
   useEffect(() => {
-    DeclareStorageVariable("local", "Item Name: Toy 1", "Toy 1");
-    DeclareStorageVariable("local", "Toy 1 Quantity", 2);
-    DeclareStorageVariable("local", "Item Name: Food 1", "Food 1");
-    DeclareStorageVariable("local", "Food 1 Quantity", 1);
+    // DeclareStorageVariable("local", "Item Name: Toy 1", "Toy 1");
+    // DeclareStorageVariable("local", "Toy 1 Quantity", 2);
+    // DeclareStorageVariable("local", "Item Name: Food 1", "Food 1");
+    // DeclareStorageVariable("local", "Food 1 Quantity", 1);
 
     setTimeout(() => {
       // Getting the cart items
