@@ -6,7 +6,7 @@
 
 import { CDNIconReturn } from "./CDNReturns";
 
-const HEDGEHOG_1 = CDNIconReturn("hedgehogs", "icon-2", "png");
+const LOGO = CDNIconReturn("hedgehogs", "icon-2", "png");
 const HEDGEHOG_2 = CDNIconReturn("hedgehogs", "icon-3", "png");
 const HEDGEHOG_3 = CDNIconReturn("hedgehogs", "icon-4", "png");
 const HEDGEHOG_4 = CDNIconReturn("hedgehogs", "icon-5", "png");
@@ -15,7 +15,7 @@ const HEDGEHOG_6 = CDNIconReturn("hedgehogs", "icon-7", "png");
 const HEDGEHOG_7 = CDNIconReturn("hedgehogs", "icon-8", "png");
 
 export {
-  HEDGEHOG_1,
+  LOGO,
   HEDGEHOG_2,
   HEDGEHOG_3,
   HEDGEHOG_4,
