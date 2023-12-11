@@ -9,6 +9,7 @@ import CartQuantity from "@/assets/data/classes/CartQuantity";
 import CartPrice from "@/assets/data/classes/CartPrice";
 import DeclareStorageVariable from "../storage/DeclareStorageVariable";
 import RemoveStorageVariable from "../storage/RemoveStorageVariable";
+import DisplayCartData from "./DisplayCartData";
 
 function removeDuplicates(array, prop) {
   const UNIQUE_MAP = new Map();
@@ -198,4 +199,8 @@ export default function SaveCartItems(foodData, toyData, housingData) {
   }
   console.log("Cart Quantity: " + quantityTotal);
   console.log("Cart Grand Total: $" + CONVERTED_GRAND_TOTAL);
+
+  const CART_DATA = { quantityTotal: quantityTotal };
+
+  DisplayCartData(CART_DATA);
 }
