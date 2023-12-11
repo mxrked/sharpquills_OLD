@@ -35,7 +35,7 @@ function CDNImgReturn(imgSub, imgSubFile, fileExt) {
   return imgSrc;
 }
 
-function CDNIconsReturn(iconSub, iconSubFile, fileExt) {
+function CDNIconReturn(iconSub, iconSubFile, fileExt) {
   let iconSrc;
 
   if (iconSub) {
@@ -50,4 +50,4 @@ function CDNIconsReturn(iconSub, iconSubFile, fileExt) {
   return iconSrc;
 }
 
-export { CDNBGReturn, CDNImgReturn, CDNIconsReturn };
+export { CDNBGReturn, CDNImgReturn, CDNIconReturn };
