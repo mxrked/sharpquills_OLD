@@ -17,4 +17,145 @@
 @font-face {
   font-family: "Rubik Regular";
   src: url("https://raw.githubusercontent.com/mxrked/freelance_projects_CDN/main/CDN_sharpquills/fonts/Rubik-Regular.ttf");
+}
+.desktop_nav {
+  background-color: #191A19;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.desktop_nav .desktop_nav_inner {
+  max-width: 1400px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_inner_side {
+  height: 140px;
+  display: flex;
+  align-items: center;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_L {
+  justify-content: flex-start;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_L .desktop_nav_inner_side_cnt .logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_L .desktop_nav_inner_side_cnt .logo img {
+  max-width: 55px;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_L .desktop_nav_inner_side_cnt .logo div {
+  text-align: left;
+  margin-left: 17px;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_L .desktop_nav_inner_side_cnt .logo div span {
+  color: white;
+  display: block;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_L .desktop_nav_inner_side_cnt .logo div .top_text {
+  font-family: "Rubik Extra Bold";
+  font-size: 25px;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_L .desktop_nav_inner_side_cnt .logo div .bottom_text {
+  font-family: "Rubik Medium";
+  font-size: 15px;
+  opacity: 0.4;
+  letter-spacing: 1.4px;
+  margin-top: 3px;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_R {
+  justify-content: flex-end;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_R .desktop_nav_inner_side_cnt {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_R .desktop_nav_inner_side_cnt .main_links {
+  max-width: 560px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Rubik Semi Bold";
+  font-size: 17px;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_R .desktop_nav_inner_side_cnt .main_links li {
+  display: flex;
+  color: white;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_R .desktop_nav_inner_side_cnt .main_links li a {
+  color: white;
+  text-decoration: none;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_R .desktop_nav_inner_side_cnt .main_links li div {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_R .desktop_nav_inner_side_cnt .main_links li div input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  opacity: 0;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_R .desktop_nav_inner_side_cnt .main_links li .sub_links {
+  width: 100%;
+  position: absolute;
+  font-family: "Rubik Medium";
+  background-color: #393E46;
+  top: 90px;
+  display: none;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.208);
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_R .desktop_nav_inner_side_cnt .main_links li .sub_links li a {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 40px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_R .desktop_nav_inner_side_cnt .main_links li .sub_links li a:hover {
+  background-color: rgba(41, 41, 41, 0.537);
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_R .desktop_nav_inner_side_cnt .main_links li .products_sub_links {
+  max-width: 120px;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_R .desktop_nav_inner_side_cnt .main_links li .types_sub_links {
+  max-width: 150px;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_R .desktop_nav_inner_side_cnt .cart_link {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_R .desktop_nav_inner_side_cnt .cart_link .icon {
+  font-size: 21px;
+  margin-right: 4px;
+}
+.desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_R .desktop_nav_inner_side_cnt .cart_link div {
+  font-size: 12px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1E5128;
+  border-radius: 50%;
+  font-size: 10px;
+  position: relative;
+  top: 6px;
+  padding-top: 1px;
 }/*# sourceMappingURL=Nav.module.css.map */
