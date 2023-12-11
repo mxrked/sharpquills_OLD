@@ -12,6 +12,7 @@ import SaveCartItems from "@/assets/functions/data/cart/SaveCartItems";
 
 // Component Imports
 import { PageHead } from "@/assets/components/global/All/PageHead";
+import { DesktopNav } from "@/assets/components/global/Nav/Desktop/DesktopNav";
 
 // Style Imports
 import "../assets/styles/modules/Index/Index.module.css";
@@ -100,10 +101,10 @@ export default function Home({
   const router = useRouter();
 
   useEffect(() => {
-    // DeclareStorageVariable("local", "Item Name: Toy 1", "Toy 1");
-    // DeclareStorageVariable("local", "Toy 1 Quantity", 2);
-    // DeclareStorageVariable("local", "Item Name: Food 1", "Food 1");
-    // DeclareStorageVariable("local", "Food 1 Quantity", 1);
+    DeclareStorageVariable("local", "Item Name: Toy 1", "Toy 1");
+    DeclareStorageVariable("local", "Toy 1 Quantity", 2);
+    DeclareStorageVariable("local", "Item Name: Food 1", "Food 1");
+    DeclareStorageVariable("local", "Food 1 Quantity", 1);
 
     setTimeout(() => {
       // Getting the cart items
@@ -114,6 +115,8 @@ export default function Home({
   return (
     <div id="PAGE" className="page half-second">
       <PageHead page_head_data={PH_DATA} icons_data={PH_ICONS_DATA} />
+
+      <DesktopNav />
 
       <div id="PAGE_CNT"></div>
     </div>

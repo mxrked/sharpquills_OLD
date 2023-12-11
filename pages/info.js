@@ -12,6 +12,7 @@ import SaveCartItems from "@/assets/functions/data/cart/SaveCartItems";
 
 // Component Imports
 import { PageHead } from "@/assets/components/global/All/PageHead";
+import { DesktopNav } from "@/assets/components/global/Nav/Desktop/DesktopNav";
 
 // Style Imports
 import "../assets/styles/modules/Info/Info.module.css";
@@ -114,6 +115,8 @@ export default function Info({
   return (
     <div id="PAGE" className="page half-second">
       <PageHead page_head_data={PH_DATA} icons_data={PH_ICONS_DATA} />
+
+      <DesktopNav />
 
       <div id="PAGE_CNT"></div>
     </div>
