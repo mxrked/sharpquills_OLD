@@ -38,4 +38,7 @@
   50% {
     transform: translateX(5px);
   }
+}
+.toggle-dropdown {
+  background-color: rgb(26, 26, 26) !important;
 }/*# sourceMappingURL=global_classnames.css.map */
