@@ -389,7 +389,9 @@
   .desktop_nav {
     display: block !important;
   }
-  .mobile_nav {
+  .mobile_nav,
+  .mobile_nav_links,
+  .mobile_nav_links_overlay {
     display: none !important;
   }
 }
