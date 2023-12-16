@@ -26,6 +26,125 @@
 }
 
 // Desktop
+.page_top {
+  height: 1200px;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+
+  .page_top_main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .page_top_main_bg_IMG {
+      position: absolute;
+      width: 100%;
+      height: 120%;
+      top: -20px;
+      left: 0;
+      filter: blur(2px) brightness(50%);
+
+      img {
+        height: 100%;
+      }
+    }
+
+    .page_top_main_bg_BG {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      @include bGSU(cover, center);
+    }
+
+    .page_top_main_overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      @include displayElement(flex, center, center);
+      padding-bottom: 140px;
+
+      .page_top_main_overlay_cnt {
+        text-align: center;
+        overflow: hidden;
+        white-space: normal;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+
+        .page_top_main_top_text {
+          color: white;
+          font-family: "Rubik Semi Bold";
+          font-size: clamp(44px, 47px, 47px);
+        }
+
+        .page_top_main_heading {
+          color: white;
+          font-family: "Rubik Extra Bold";
+          font-size: clamp(74px, 77px, 77px);
+          line-height: 70px;
+        }
+
+        p {
+          color: white;
+          font-family: "Rubik Medium";
+          font-size: clamp(21px, 23px, 23px);
+          @include quickCenter("relative");
+          margin-top: 35px;
+          margin-bottom: 45px;
+          max-width: 750px;
+        }
+
+        ul {
+          @include displayElement(flex, space-between, center);
+          max-width: 350px;
+          @include quickCenter("relative");
+
+          li {
+            &:first-child {
+              a {
+                background-color: $Everglade;
+              }
+            }
+
+            &:last-child {
+              a {
+                background-color: $PickledBean;
+              }
+            }
+
+            a {
+              height: 45px;
+              padding-left: 12px;
+              padding-right: 12px;
+              font-family: "Rubik Semi Bold";
+              color: white;
+              @include displayElement(flex, center, center);
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .page_top_white_wave {
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    bottom: 0px;
+    left: 0;
+    object-fit: cover;
+    object-position: top;
+    // border: 2px solid red;
+  }
+}
 
 // Responsive
 @media all and (max-width: 1995px) {

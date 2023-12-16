@@ -115,6 +115,7 @@
   top: 90px;
   display: none;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.208);
+  z-index: 40;
 }
 .desktop_nav .desktop_nav_inner .desktop_nav_inner_box .desktop_nav_inner_row .desktop_nav_R .desktop_nav_inner_side_cnt .main_links li .sub_links li a {
   width: 100%;

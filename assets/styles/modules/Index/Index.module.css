@@ -17,4 +17,114 @@
 @font-face {
   font-family: "Rubik Regular";
   src: url("https://raw.githubusercontent.com/mxrked/freelance_projects_CDN/main/CDN_sharpquills/fonts/Rubik-Regular.ttf");
+}
+.page_top {
+  height: 1200px;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+.page_top .page_top_main {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.page_top .page_top_main .page_top_main_bg_IMG {
+  position: absolute;
+  width: 100%;
+  height: 120%;
+  top: -20px;
+  left: 0;
+  filter: blur(2px) brightness(50%);
+}
+.page_top .page_top_main .page_top_main_bg_IMG img {
+  height: 100%;
+}
+.page_top .page_top_main .page_top_main_bg_BG {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.page_top .page_top_main .page_top_main_overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 140px;
+}
+.page_top .page_top_main .page_top_main_overlay .page_top_main_overlay_cnt {
+  text-align: center;
+  overflow: hidden;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.page_top .page_top_main .page_top_main_overlay .page_top_main_overlay_cnt .page_top_main_top_text {
+  color: white;
+  font-family: "Rubik Semi Bold";
+  font-size: 47px;
+}
+.page_top .page_top_main .page_top_main_overlay .page_top_main_overlay_cnt .page_top_main_heading {
+  color: white;
+  font-family: "Rubik Extra Bold";
+  font-size: 77px;
+  line-height: 70px;
+}
+.page_top .page_top_main .page_top_main_overlay .page_top_main_overlay_cnt p {
+  color: white;
+  font-family: "Rubik Medium";
+  font-size: 23px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 35px;
+  margin-bottom: 45px;
+  max-width: 750px;
+}
+.page_top .page_top_main .page_top_main_overlay .page_top_main_overlay_cnt ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.page_top .page_top_main .page_top_main_overlay .page_top_main_overlay_cnt ul li:first-child a {
+  background-color: #1E5128;
+}
+.page_top .page_top_main .page_top_main_overlay .page_top_main_overlay_cnt ul li:last-child a {
+  background-color: #65451F;
+}
+.page_top .page_top_main .page_top_main_overlay .page_top_main_overlay_cnt ul li a {
+  height: 45px;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-family: "Rubik Semi Bold";
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.page_top .page_top_white_wave {
+  position: absolute;
+  width: 100%;
+  height: 400px;
+  bottom: 0px;
+  left: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
 }/*# sourceMappingURL=Index.module.css.map */
