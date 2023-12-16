@@ -10,15 +10,19 @@ import path from "path";
 import DeclareStorageVariable from "@/assets/functions/data/storage/DeclareStorageVariable";
 import SaveCartItems from "@/assets/functions/data/cart/SaveCartItems";
 
+import { INDEX_TOP_BG } from "@/assets/cdns/CDNBgs";
+
 // Component Imports
 import { PageHead } from "@/assets/components/global/All/PageHead";
 import { DesktopNav } from "@/assets/components/global/Nav/Desktop/DesktopNav";
 import { MobileNav } from "@/assets/components/global/Nav/Mobile/MobileNav";
 import { MobileNavLinks } from "@/assets/components/global/Nav/Mobile/MobileNavLinks";
 
+import { Top } from "@/assets/components/pages/All/Top.1";
+
 // Style Imports
 import styles from "../assets/styles/modules/Nav/Nav.module.css";
-import "../assets/styles/modules/Index/Index.module.css";
+import index_styles from "../assets/styles/modules/Index/Index.module.css";
 
 export async function getServerSideProps() {
   const PAGE_HEAD_DATA_DIRECTORY = "public/data/Page_Head_Data/";
@@ -102,6 +106,25 @@ export default function Home({
   HOUSING_ITEMS_DATA,
 }) {
   const router = useRouter();
+
+  const HEADING_TEXT = (
+    <>
+      Care, Learn and Help <br /> your Hedgehog.
+    </>
+  );
+
+  const TOP_OBJECT = {
+    id: "indexTop",
+    stylesSrc: index_styles,
+    bg: INDEX_TOP_BG,
+    topText: "All Things Hedgie.",
+    heading: HEADING_TEXT,
+    text: "We provide products such as food, toys and housing for your hedgehog. You can also learn the different types of hedgehog too.",
+    links: [
+      { linkID: "L_1", linkName: "Browse Products", linkRoute: "/store" },
+      { linkID: "L_2", linkName: "Learn The Types", linkRoute: "/types" },
+    ],
+  };
 
   const mobileNavHolderRef = useRef(null);
   const [IS_MOBILE_NAV_HOLDER_VISIBLE, SET_IS_MOBILE_NAV_HOLDER_VISIBLE] =
@@ -221,6 +244,9 @@ export default function Home({
           id="mobileNavLinksOverlay"
           className={`${styles.mobile_nav_links_overlay}`}
         />
+
+        <Top topObject={TOP_OBJECT} />
+        <br />
       </div>
     </div>
   );
