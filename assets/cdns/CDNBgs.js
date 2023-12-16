@@ -6,4 +6,6 @@
 
 import { CDNBGReturn } from "./CDNReturns";
 
-export {};
+const INDEX_TOP_BG = CDNBGReturn("index", "top-bg", "webp");
+
+export { INDEX_TOP_BG };
