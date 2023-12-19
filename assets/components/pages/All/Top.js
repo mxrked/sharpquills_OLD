@@ -11,13 +11,14 @@ import { LazyLoadBackgroundImage } from "../../global/All/LazyLoadBackgroundImag
 import { WHITE_WAVE } from "@/assets/cdns/CDNImgs";
 
 export const Top = (props) => {
-  const OBJECT = props.topObject;
+  const OBJECT = props.object;
   const STYLES = OBJECT.stylesSrc;
   const BG = OBJECT.bg;
   const TOP_TEXT = OBJECT.topText;
   const HEADING = OBJECT.heading;
   const TEXT = OBJECT.text;
   const LINKS = OBJECT.links;
+  const DIVIDER_TYPE = OBJECT.dividerType;
 
   return (
     <section id={OBJECT.id} className={`${STYLES.page_top} half-second`}>
@@ -71,10 +72,16 @@ export const Top = (props) => {
             </div>
           </div>
 
-          <LazyLoadImage
-            src={WHITE_WAVE}
-            className={STYLES.page_top_white_wave}
-          />
+          {DIVIDER_TYPE == "wave" ? (
+            <LazyLoadImage
+              src={WHITE_WAVE}
+              className={STYLES.page_top_white_wave}
+            />
+          ) : null}
+
+          {DIVIDER_TYPE == "slanted" ? (
+            <div className={STYLES.slanted} />
+          ) : null}
         </div>
       ) : null}
     </section>
