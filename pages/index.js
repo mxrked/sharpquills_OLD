@@ -9,8 +9,14 @@ import path from "path";
 // Data/Functions/Images Imports
 import DeclareStorageVariable from "@/assets/functions/data/storage/DeclareStorageVariable";
 import SaveCartItems from "@/assets/functions/data/cart/SaveCartItems";
+import HeadingElement from "@/assets/functions/dom/elements/HeadingElement";
 
-import { INDEX_TOP_BG } from "@/assets/cdns/CDNBgs";
+import {
+  INDEX_TOP_BG,
+  INDEX_STORE_BG,
+  INDEX_INFO_BG,
+} from "@/assets/cdns/CDNBgs";
+import { HEDGEHOG_5, HEDGEHOG_7 } from "@/assets/cdns/CDNIcons";
 
 // Component Imports
 import { PageHead } from "@/assets/components/global/All/PageHead";
@@ -18,7 +24,10 @@ import { DesktopNav } from "@/assets/components/global/Nav/Desktop/DesktopNav";
 import { MobileNav } from "@/assets/components/global/Nav/Mobile/MobileNav";
 import { MobileNavLinks } from "@/assets/components/global/Nav/Mobile/MobileNavLinks";
 
-import { Top } from "@/assets/components/pages/All/Top.1";
+import { PageFade } from "@/assets/animations/components/PageFade";
+
+import { Top } from "@/assets/components/pages/All/Top.js";
+import { ImageWithIcon } from "@/assets/components/pages/All/ImageWithIcon";
 
 // Style Imports
 import styles from "../assets/styles/modules/Nav/Nav.module.css";
@@ -107,11 +116,7 @@ export default function Home({
 }) {
   const router = useRouter();
 
-  const HEADING_TEXT = (
-    <>
-      Care, Learn and Help <br /> your Hedgehog.
-    </>
-  );
+  const HEADING_TEXT = HeadingElement("Care, Learn and Help", "your Hedgehog.");
 
   const TOP_OBJECT = {
     id: "indexTop",
@@ -124,6 +129,21 @@ export default function Home({
       { linkID: "L_1", linkName: "Browse Products", linkRoute: "/store" },
       { linkID: "L_2", linkName: "Learn The Types", linkRoute: "/types" },
     ],
+    dividerType: "slanted",
+  };
+
+  const STORE_IMG_ICON_OBJECT = {
+    id: "indexStoreImgAndIcon",
+    stylesSrc: index_styles,
+    imgSrc: INDEX_STORE_BG,
+    iconSrc: HEDGEHOG_7,
+  };
+
+  const INFO_IMG_ICON_OBJECT = {
+    id: "indexInfoImgAndIcon",
+    stylesSrc: index_styles,
+    imgSrc: INDEX_INFO_BG,
+    iconSrc: HEDGEHOG_5,
   };
 
   const mobileNavHolderRef = useRef(null);
@@ -218,10 +238,10 @@ export default function Home({
   }, []);
 
   useEffect(() => {
-    DeclareStorageVariable("local", "Item Name: Toy 1", "Toy 1");
-    DeclareStorageVariable("local", "Toy 1 Quantity", 2);
-    DeclareStorageVariable("local", "Item Name: Food 1", "Food 1");
-    DeclareStorageVariable("local", "Food 1 Quantity", 1);
+    // DeclareStorageVariable("local", "Item Name: Toy 1", "Toy 1");
+    // DeclareStorageVariable("local", "Toy 1 Quantity", 2);
+    // DeclareStorageVariable("local", "Item Name: Food 1", "Food 1");
+    // DeclareStorageVariable("local", "Food 1 Quantity", 1);
 
     setTimeout(() => {
       // Getting the cart items
@@ -233,11 +253,13 @@ export default function Home({
     <div id="PAGE" className="page half-second">
       <PageHead page_head_data={PH_DATA} icons_data={PH_ICONS_DATA} />
 
-      <DesktopNav />
-      <div id="mobileNavHolder" ref={mobileNavHolderRef}>
-        <MobileNav />
-        <MobileNavLinks />
-      </div>
+      <PageFade>
+        <DesktopNav />
+        <div id="mobileNavHolder" ref={mobileNavHolderRef}>
+          <MobileNav />
+          <MobileNavLinks />
+        </div>
+      </PageFade>
 
       <div id="PAGE_CNT">
         <div
@@ -245,8 +267,61 @@ export default function Home({
           className={`${styles.mobile_nav_links_overlay}`}
         />
 
-        <Top topObject={TOP_OBJECT} />
-        <br />
+        <PageFade>
+          <Top object={TOP_OBJECT} />
+        </PageFade>
+
+        <section id="indexStore" className={`${index_styles.index_store}`}>
+          <div className={`${index_styles.index_store_inner}`}>
+            <div
+              className={`${index_styles.index_store_inner_box} container-fluid`}
+            >
+              <div className={`${index_styles.index_store_inner_row} row`}>
+                <div
+                  className={`${index_styles.index_store_inner_side} ${index_styles.index_store_L} col-lg-5 col-md-5 col-sm-12 col-xs-12`}
+                >
+                  <div className={`${index_styles.index_store_inner_side_cnt}`}>
+                    <ImageWithIcon object={STORE_IMG_ICON_OBJECT} />
+                  </div>
+                </div>
+
+                <div
+                  className={`${index_styles.index_store_inner_side} ${index_styles.index_store_R} col-lg-7 col-md-7 col-sm-12 col-xs-12`}
+                >
+                  <div
+                    className={`${index_styles.index_store_inner_side_cnt}`}
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="indexInfo" className={`${index_styles.index_info}`}>
+          <div className={`${index_styles.index_info_inner}`}>
+            <div
+              className={`${index_styles.index_info_inner_box} container-fluid`}
+            >
+              <div className={`${index_styles.index_info_inner_row} row`}>
+                <div
+                  className={`${index_styles.index_info_inner_side} ${index_styles.index_info_L} col-lg-5 col-md-5 col-sm-12 col-xs-12`}
+                >
+                  <div className={`${index_styles.index_info_inner_side_cnt}`}>
+                    <ImageWithIcon object={INFO_IMG_ICON_OBJECT} />
+                  </div>
+                </div>
+
+                <div
+                  className={`${index_styles.index_info_inner_side} ${index_styles.index_info_R} col-lg-7 col-md-7 col-sm-12 col-xs-12`}
+                >
+                  <div
+                    className={`${index_styles.index_info_inner_side_cnt}`}
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
