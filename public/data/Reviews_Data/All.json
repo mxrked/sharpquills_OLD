@@ -1,0 +1,30 @@
+[
+  {
+    "reviewID": "review_1",
+    "reviewName": "John Doe",
+    "reviewImg": "..",
+    "reviewDate": "..",
+    "reviewText": ".."
+  },
+  {
+    "reviewID": "review_2",
+    "reviewName": "Jane Doe",
+    "reviewImg": "..",
+    "reviewDate": "..",
+    "reviewText": ".."
+  },
+  {
+    "reviewID": "review_3",
+    "reviewName": "John Doe",
+    "reviewImg": "..",
+    "reviewDate": "..",
+    "reviewText": ".."
+  },
+  {
+    "reviewID": "review_4",
+    "reviewName": "Jane Doe",
+    "reviewImg": "..",
+    "reviewDate": "..",
+    "reviewText": ".."
+  }
+]
