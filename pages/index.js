@@ -36,11 +36,13 @@ import { TypeTrigger } from "@/assets/components/pages/Types/TypeTrigger";
 // Style Imports
 import styles from "../assets/styles/modules/Nav/Nav.module.css";
 import index_styles from "../assets/styles/modules/Index/Index.module.css";
+import { Review } from "@/assets/components/pages/Info/Review";
 
 export async function getServerSideProps() {
   const PAGE_HEAD_DATA_DIRECTORY = "public/data/Page_Head_Data/";
   const STORE_DATA_DIRECTORY = "public/data/Store_Data/";
   const TYPES_DATA_DIRECTORY = "public/data/Types_Data/";
+  const REVIEWS_DATA_DIRECTORY = "public/data/Reviews_Data/";
 
   const UTF8 = "utf-8";
 
@@ -74,6 +76,11 @@ export async function getServerSideProps() {
     TYPES_DATA_DIRECTORY,
     "All.json"
   );
+  const REVIEWS_DATA_FP = path.join(
+    process.cwd(),
+    REVIEWS_DATA_DIRECTORY,
+    "All.json"
+  );
 
   const PH_ICONS_DATA_FC = fs.readFileSync(PH_ICONS_DATA_FP, UTF8);
   const PH_DATA_FC = fs.readFileSync(PH_DATA_FP, UTF8);
@@ -81,6 +88,7 @@ export async function getServerSideProps() {
   const TOY_ITEMS_DATA_FC = fs.readFileSync(TOY_ITEMS_DATA_FP, UTF8);
   const HOUSING_ITEMS_DATA_FC = fs.readFileSync(HOUSING_ITEMS_DATA_FP, UTF8);
   const TYPES_DATA_FC = fs.readFileSync(TYPES_DATA_FP, UTF8);
+  const REVIEWS_DATA_FC = fs.readFileSync(REVIEWS_DATA_FP, UTF8);
 
   let PH_ICONS_DATA = undefined;
   let PH_DATA = undefined;
@@ -88,6 +96,7 @@ export async function getServerSideProps() {
   let TOY_ITEMS_DATA = undefined;
   let HOUSING_ITEMS_DATA = undefined;
   let TYPES_DATA = undefined;
+  let REVIEWS_DATA = undefined;
 
   try {
     PH_ICONS_DATA = JSON.parse(PH_ICONS_DATA_FC);
@@ -96,6 +105,7 @@ export async function getServerSideProps() {
     TOY_ITEMS_DATA = JSON.parse(TOY_ITEMS_DATA_FC);
     HOUSING_ITEMS_DATA = JSON.parse(HOUSING_ITEMS_DATA_FC);
     TYPES_DATA = JSON.parse(TYPES_DATA_FC);
+    REVIEWS_DATA = JSON.parse(REVIEWS_DATA_FC);
 
     return {
       props: {
@@ -105,6 +115,7 @@ export async function getServerSideProps() {
         TOY_ITEMS_DATA,
         HOUSING_ITEMS_DATA,
         TYPES_DATA,
+        REVIEWS_DATA,
       },
     };
   } catch (error) {
@@ -118,6 +129,7 @@ export async function getServerSideProps() {
         TOY_ITEMS_DATA: null,
         HOUSING_ITEMS_DATA: null,
         TYPES_DATA: null,
+        REVIEWS_DATA: null,
       },
     };
   }
@@ -130,6 +142,7 @@ export default function Home({
   TOY_ITEMS_DATA,
   HOUSING_ITEMS_DATA,
   TYPES_DATA,
+  REVIEWS_DATA,
 }) {
   const router = useRouter();
 
@@ -348,13 +361,21 @@ export default function Home({
         {/**
 
         {TYPES_DATA.map((object) => (
-          <TypeTrigger object={object} stylesSrc={index_styles} />
+          <TypeTrigger data={TYPES_DATA} object={object} stylesSrc={index_styles} />
         ))}
 
         {TYPES_DATA.map((object) => (
           <TypeModal object={object} stylesSrc={index_styles} />
         ))}
-        
+
+        {REVIEWS_DATA.map((object) => (
+          <Review
+            data={REVIEWS_DATA}
+            object={object}
+            stylesSrc={index_styles}
+          />
+        ))}
+
         */}
 
         <section id="indexStore" className={`${index_styles.index_store}`}>
