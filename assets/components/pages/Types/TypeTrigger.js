@@ -11,6 +11,7 @@ import CheckValidObjectProperty from "@/assets/functions/dom/checkers/CheckValid
 import DeclareStorageVariable from "@/assets/functions/data/storage/DeclareStorageVariable";
 
 export const TypeTrigger = (props) => {
+  const DATA = props.data;
   const OBJECT = props.object;
   const STYLES_SRC = props.stylesSrc;
   const TYPE_NAME = OBJECT.typeName;
@@ -23,7 +24,7 @@ export const TypeTrigger = (props) => {
   const VALID_TRIGGER_ID = CheckValidObjectProperty(TYPE_TRIGGER_ID);
   const VALID_MODAL_ID = CheckValidObjectProperty(TYPE_MODAL_ID);
 
-  const COLUMN_CLASSNAMES = ManipColumnClassnames(props.index, OBJECT.length);
+  const COLUMN_CLASSNAMES = ManipColumnClassnames(OBJECT, DATA.length);
 
   return (
     <div>
