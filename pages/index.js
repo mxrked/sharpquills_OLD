@@ -15,8 +15,9 @@ import {
   INDEX_TOP_BG,
   INDEX_STORE_BG,
   INDEX_INFO_BG,
+  INDEX_CONTACT_BG,
 } from "@/assets/cdns/CDNBgs";
-import { HEDGEHOG_5, HEDGEHOG_7 } from "@/assets/cdns/CDNIcons";
+import { HEDGEHOG_3, HEDGEHOG_5, HEDGEHOG_7 } from "@/assets/cdns/CDNIcons";
 
 // Component Imports
 import { PageHead } from "@/assets/components/global/All/PageHead";
@@ -28,6 +29,9 @@ import { PageFade } from "@/assets/animations/components/PageFade";
 
 import { Top } from "@/assets/components/pages/All/Top.js";
 import { ImageWithIcon } from "@/assets/components/pages/All/ImageWithIcon";
+import { TextWithLinks } from "@/assets/components/pages/All/TextWithLinks";
+import { TypeModal } from "@/assets/components/pages/Types/TypeModal";
+import { TypeTrigger } from "@/assets/components/pages/Types/TypeTrigger";
 
 // Style Imports
 import styles from "../assets/styles/modules/Nav/Nav.module.css";
@@ -36,6 +40,8 @@ import index_styles from "../assets/styles/modules/Index/Index.module.css";
 export async function getServerSideProps() {
   const PAGE_HEAD_DATA_DIRECTORY = "public/data/Page_Head_Data/";
   const STORE_DATA_DIRECTORY = "public/data/Store_Data/";
+  const TYPES_DATA_DIRECTORY = "public/data/Types_Data/";
+
   const UTF8 = "utf-8";
 
   const PH_ICONS_DATA_FP = path.join(
@@ -63,18 +69,25 @@ export async function getServerSideProps() {
     STORE_DATA_DIRECTORY,
     "Housing.json"
   );
+  const TYPES_DATA_FP = path.join(
+    process.cwd(),
+    TYPES_DATA_DIRECTORY,
+    "All.json"
+  );
 
   const PH_ICONS_DATA_FC = fs.readFileSync(PH_ICONS_DATA_FP, UTF8);
   const PH_DATA_FC = fs.readFileSync(PH_DATA_FP, UTF8);
   const FOOD_ITEMS_DATA_FC = fs.readFileSync(FOOD_ITEMS_DATA_FP, UTF8);
   const TOY_ITEMS_DATA_FC = fs.readFileSync(TOY_ITEMS_DATA_FP, UTF8);
   const HOUSING_ITEMS_DATA_FC = fs.readFileSync(HOUSING_ITEMS_DATA_FP, UTF8);
+  const TYPES_DATA_FC = fs.readFileSync(TYPES_DATA_FP, UTF8);
 
   let PH_ICONS_DATA = undefined;
   let PH_DATA = undefined;
   let FOOD_ITEMS_DATA = undefined;
   let TOY_ITEMS_DATA = undefined;
   let HOUSING_ITEMS_DATA = undefined;
+  let TYPES_DATA = undefined;
 
   try {
     PH_ICONS_DATA = JSON.parse(PH_ICONS_DATA_FC);
@@ -82,6 +95,7 @@ export async function getServerSideProps() {
     FOOD_ITEMS_DATA = JSON.parse(FOOD_ITEMS_DATA_FC);
     TOY_ITEMS_DATA = JSON.parse(TOY_ITEMS_DATA_FC);
     HOUSING_ITEMS_DATA = JSON.parse(HOUSING_ITEMS_DATA_FC);
+    TYPES_DATA = JSON.parse(TYPES_DATA_FC);
 
     return {
       props: {
@@ -90,6 +104,7 @@ export async function getServerSideProps() {
         FOOD_ITEMS_DATA,
         TOY_ITEMS_DATA,
         HOUSING_ITEMS_DATA,
+        TYPES_DATA,
       },
     };
   } catch (error) {
@@ -102,6 +117,7 @@ export async function getServerSideProps() {
         FOOD_ITEMS_DATA: null,
         TOY_ITEMS_DATA: null,
         HOUSING_ITEMS_DATA: null,
+        TYPES_DATA: null,
       },
     };
   }
@@ -113,21 +129,37 @@ export default function Home({
   FOOD_ITEMS_DATA,
   TOY_ITEMS_DATA,
   HOUSING_ITEMS_DATA,
+  TYPES_DATA,
 }) {
   const router = useRouter();
 
-  const HEADING_TEXT = HeadingElement("Care, Learn and Help", "your Hedgehog.");
+  const TOP_HEADING_TEXT = HeadingElement(
+    "Care, Learn and Help",
+    "your Hedgehog."
+  );
+  const STORE_HEADING_TEXT = HeadingElement(
+    "Food, Toys, Housing.",
+    "All for your Hedgehog."
+  );
+  const INFO_HEADING_TEXT = HeadingElement(
+    "Get to know us and how",
+    "we help all Hedgehogs."
+  );
+  const CONTACT_HEADING_TEXT = HeadingElement(
+    "Reach out to us for any",
+    "help with your Hedgehog."
+  );
 
   const TOP_OBJECT = {
     id: "indexTop",
     stylesSrc: index_styles,
     bg: INDEX_TOP_BG,
     topText: "All Things Hedgie.",
-    heading: HEADING_TEXT,
+    heading: TOP_HEADING_TEXT,
     text: "We provide products such as food, toys and housing for your hedgehog. You can also learn the different types of hedgehog too.",
     links: [
-      { linkID: "L_1", linkName: "Browse Products", linkRoute: "/store" },
-      { linkID: "L_2", linkName: "Learn The Types", linkRoute: "/types" },
+      { linkID: "TOP_L_1", linkName: "Browse Products", linkRoute: "/store" },
+      { linkID: "TOP_L_2", linkName: "Learn The Types", linkRoute: "/types" },
     ],
     dividerType: "slanted",
   };
@@ -138,12 +170,54 @@ export default function Home({
     imgSrc: INDEX_STORE_BG,
     iconSrc: HEDGEHOG_7,
   };
+  const STORE_TEXT_AND_LINKS = {
+    id: "indexStoreTextAndLinks",
+    stylesSrc: index_styles,
+    headingText: STORE_HEADING_TEXT,
+    mainText:
+      "All of our products are of high quality and are safe for all types of hedgehog.",
+    links: [
+      { linkID: "STORE_L_1", linkName: "Browse All", linkRoute: "/store" },
+      { linkID: "STORE_L_2", linkName: "Food", linkRoute: "/store#food" },
+      { linkID: "STORE_L_3", linkName: "Toys", linkRoute: "/store#toys" },
+      { linkID: "STORE_L_4", linkName: "Housing", linkRoute: "/store#housing" },
+    ],
+  };
 
   const INFO_IMG_ICON_OBJECT = {
     id: "indexInfoImgAndIcon",
     stylesSrc: index_styles,
     imgSrc: INDEX_INFO_BG,
     iconSrc: HEDGEHOG_5,
+  };
+  const INFO_TEXT_AND_LINKS = {
+    id: "indexInfoTextAndLinks",
+    stylesSrc: index_styles,
+    headingText: INFO_HEADING_TEXT,
+    mainText:
+      "Learn our background, our objective to help all hedgehogs and keeping them safe.",
+    links: [{ linkID: "INFO_L_1", linkName: "Learn More", linkRoute: "/info" }],
+  };
+
+  const CONTACT_IMG_ICON_OBJECT = {
+    id: "indexContactImgAndIcon",
+    stylesSrc: index_styles,
+    imgSrc: INDEX_CONTACT_BG,
+    iconSrc: HEDGEHOG_3,
+  };
+  const CONTACT_TEXT_AND_LINKS = {
+    id: "indexContactTextAndLinks",
+    stylesSrc: index_styles,
+    headingText: CONTACT_HEADING_TEXT,
+    mainText:
+      "Let us know if there are any issues you may have via our contact form or giving us a call.",
+    links: [
+      {
+        linkID: "CONTACT_L_1",
+        linkName: "Reach Out To Us",
+        linkRoute: "/contact",
+      },
+    ],
   };
 
   const mobileNavHolderRef = useRef(null);
@@ -271,6 +345,18 @@ export default function Home({
           <Top object={TOP_OBJECT} />
         </PageFade>
 
+        {/**
+
+        {TYPES_DATA.map((object) => (
+          <TypeTrigger object={object} stylesSrc={index_styles} />
+        ))}
+
+        {TYPES_DATA.map((object) => (
+          <TypeModal object={object} stylesSrc={index_styles} />
+        ))}
+        
+        */}
+
         <section id="indexStore" className={`${index_styles.index_store}`}>
           <div className={`${index_styles.index_store_inner}`}>
             <div
@@ -288,9 +374,9 @@ export default function Home({
                 <div
                   className={`${index_styles.index_store_inner_side} ${index_styles.index_store_R} col-lg-7 col-md-7 col-sm-12 col-xs-12`}
                 >
-                  <div
-                    className={`${index_styles.index_store_inner_side_cnt}`}
-                  ></div>
+                  <div className={`${index_styles.index_store_inner_side_cnt}`}>
+                    <TextWithLinks object={STORE_TEXT_AND_LINKS} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -314,9 +400,39 @@ export default function Home({
                 <div
                   className={`${index_styles.index_info_inner_side} ${index_styles.index_info_R} col-lg-7 col-md-7 col-sm-12 col-xs-12`}
                 >
+                  <div className={`${index_styles.index_info_inner_side_cnt}`}>
+                    <TextWithLinks object={INFO_TEXT_AND_LINKS} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="indexContact" className={`${index_styles.index_contact}`}>
+          <div className={`${index_styles.index_contact_inner}`}>
+            <div
+              className={`${index_styles.index_contact_inner_box} container-fluid`}
+            >
+              <div className={`${index_styles.index_contact_inner_row} row`}>
+                <div
+                  className={`${index_styles.index_contact_inner_side} ${index_styles.index_contact_L} col-lg-7 col-md-7 col-sm-12 col-xs-12`}
+                >
                   <div
-                    className={`${index_styles.index_info_inner_side_cnt}`}
-                  ></div>
+                    className={`${index_styles.index_contact_inner_side_cnt}`}
+                  >
+                    <TextWithLinks object={CONTACT_TEXT_AND_LINKS} />
+                  </div>
+                </div>
+
+                <div
+                  className={`${index_styles.index_contact_inner_side} ${index_styles.index_contact_R} col-lg-5 col-md-5 col-sm-12 col-xs-12`}
+                >
+                  <div
+                    className={`${index_styles.index_contact_inner_side_cnt}`}
+                  >
+                    <ImageWithIcon object={CONTACT_IMG_ICON_OBJECT} />
+                  </div>
                 </div>
               </div>
             </div>
