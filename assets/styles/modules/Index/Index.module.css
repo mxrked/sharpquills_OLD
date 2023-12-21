@@ -149,6 +149,10 @@
   background-color: white;
 }
 
+.type_modal {
+  display: none;
+}
+
 @media all and (max-width: 1995px) {
   .page_top {
     height: 950px;
