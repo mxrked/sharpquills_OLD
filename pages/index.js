@@ -29,21 +29,16 @@ import { PageFade } from "@/assets/animations/components/PageFade";
 import { FadeLeft } from "@/assets/animations/components/FadeLeft";
 
 import { Top } from "@/assets/components/pages/All/Top.js";
-import { ImageWithIcon } from "@/assets/components/pages/All/ImageWithIcon";
-import { TextWithLinks } from "@/assets/components/pages/All/TextWithLinks";
-import { TypeModal } from "@/assets/components/pages/Types/TypeModal";
-import { TypeTrigger } from "@/assets/components/pages/Types/TypeTrigger";
-import { Review } from "@/assets/components/pages/Info/Review";
+import { IndexStore } from "@/assets/components/pages/Index/IndexStore";
+import { IndexTypes } from "@/assets/components/pages/Index/IndexTypes";
+import { IndexInfo } from "@/assets/components/pages/Index/IndexInfo";
+import { IndexReviews } from "@/assets/components/pages/Index/IndexReviews";
+import { IndexContact } from "@/assets/components/pages/Index/IndexContact";
+import { FadeRight } from "@/assets/animations/components/FadeRight";
 
 // Style Imports
 import styles from "../assets/styles/modules/Nav/Nav.module.css";
 import index_styles from "../assets/styles/modules/Index/Index.module.css";
-import { IndexContact } from "@/assets/components/pages/Index/IndexContact";
-import { IndexInfo } from "@/assets/components/pages/Index/IndexInfo";
-import { FadeRight } from "@/assets/animations/components/FadeRight";
-import { IndexStore } from "@/assets/components/pages/Index/IndexStore";
-import { IndexTypes } from "@/assets/components/pages/Index/IndexTypes";
-import { IndexReviews } from "@/assets/components/pages/Index/IndexReviews";
 
 export async function getServerSideProps() {
   const PAGE_HEAD_DATA_DIRECTORY = "public/data/Page_Head_Data/";
@@ -354,10 +349,6 @@ export default function Home({
           <MobileNavLinks />
         </div>
       </PageFade>
-
-      {TYPES_DATA.map((object) => (
-        <TypeModal object={object} stylesSrc={index_styles} />
-      ))}
 
       <div id="PAGE_CNT">
         <div
