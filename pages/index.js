@@ -26,17 +26,24 @@ import { MobileNav } from "@/assets/components/global/Nav/Mobile/MobileNav";
 import { MobileNavLinks } from "@/assets/components/global/Nav/Mobile/MobileNavLinks";
 
 import { PageFade } from "@/assets/animations/components/PageFade";
+import { FadeLeft } from "@/assets/animations/components/FadeLeft";
 
 import { Top } from "@/assets/components/pages/All/Top.js";
 import { ImageWithIcon } from "@/assets/components/pages/All/ImageWithIcon";
 import { TextWithLinks } from "@/assets/components/pages/All/TextWithLinks";
 import { TypeModal } from "@/assets/components/pages/Types/TypeModal";
 import { TypeTrigger } from "@/assets/components/pages/Types/TypeTrigger";
+import { Review } from "@/assets/components/pages/Info/Review";
 
 // Style Imports
 import styles from "../assets/styles/modules/Nav/Nav.module.css";
 import index_styles from "../assets/styles/modules/Index/Index.module.css";
-import { Review } from "@/assets/components/pages/Info/Review";
+import { IndexContact } from "@/assets/components/pages/Index/IndexContact";
+import { IndexInfo } from "@/assets/components/pages/Index/IndexInfo";
+import { FadeRight } from "@/assets/animations/components/FadeRight";
+import { IndexStore } from "@/assets/components/pages/Index/IndexStore";
+import { IndexTypes } from "@/assets/components/pages/Index/IndexTypes";
+import { IndexReviews } from "@/assets/components/pages/Index/IndexReviews";
 
 export async function getServerSideProps() {
   const PAGE_HEAD_DATA_DIRECTORY = "public/data/Page_Head_Data/";
@@ -348,6 +355,10 @@ export default function Home({
         </div>
       </PageFade>
 
+      {TYPES_DATA.map((object) => (
+        <TypeModal object={object} stylesSrc={index_styles} />
+      ))}
+
       <div id="PAGE_CNT">
         <div
           id="mobileNavLinksOverlay"
@@ -358,107 +369,34 @@ export default function Home({
           <Top object={TOP_OBJECT} />
         </PageFade>
 
-        {/**
-
-        {TYPES_DATA.map((object) => (
-          <TypeTrigger data={TYPES_DATA} object={object} stylesSrc={index_styles} />
-        ))}
-
-        {TYPES_DATA.map((object) => (
-          <TypeModal object={object} stylesSrc={index_styles} />
-        ))}
-
-        {REVIEWS_DATA.map((object) => (
-          <Review
-            data={REVIEWS_DATA}
-            object={object}
-            stylesSrc={index_styles}
+        <FadeRight>
+          <IndexStore
+            imgIconObject={STORE_IMG_ICON_OBJECT}
+            textWithLinksObject={STORE_TEXT_AND_LINKS}
           />
-        ))}
+        </FadeRight>
 
-        */}
+        <FadeLeft>
+          <IndexTypes data={TYPES_DATA} />
+        </FadeLeft>
 
-        <section id="indexStore" className={`${index_styles.index_store}`}>
-          <div className={`${index_styles.index_store_inner}`}>
-            <div
-              className={`${index_styles.index_store_inner_box} container-fluid`}
-            >
-              <div className={`${index_styles.index_store_inner_row} row`}>
-                <div
-                  className={`${index_styles.index_store_inner_side} ${index_styles.index_store_L} col-lg-5 col-md-5 col-sm-12 col-xs-12`}
-                >
-                  <div className={`${index_styles.index_store_inner_side_cnt}`}>
-                    <ImageWithIcon object={STORE_IMG_ICON_OBJECT} />
-                  </div>
-                </div>
+        <FadeRight>
+          <IndexInfo
+            imgIconObject={INFO_IMG_ICON_OBJECT}
+            textWithLinksObject={INFO_TEXT_AND_LINKS}
+          />
+        </FadeRight>
 
-                <div
-                  className={`${index_styles.index_store_inner_side} ${index_styles.index_store_R} col-lg-7 col-md-7 col-sm-12 col-xs-12`}
-                >
-                  <div className={`${index_styles.index_store_inner_side_cnt}`}>
-                    <TextWithLinks object={STORE_TEXT_AND_LINKS} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <FadeLeft>
+          <IndexReviews data={REVIEWS_DATA} />
+        </FadeLeft>
 
-        <section id="indexInfo" className={`${index_styles.index_info}`}>
-          <div className={`${index_styles.index_info_inner}`}>
-            <div
-              className={`${index_styles.index_info_inner_box} container-fluid`}
-            >
-              <div className={`${index_styles.index_info_inner_row} row`}>
-                <div
-                  className={`${index_styles.index_info_inner_side} ${index_styles.index_info_L} col-lg-5 col-md-5 col-sm-12 col-xs-12`}
-                >
-                  <div className={`${index_styles.index_info_inner_side_cnt}`}>
-                    <ImageWithIcon object={INFO_IMG_ICON_OBJECT} />
-                  </div>
-                </div>
-
-                <div
-                  className={`${index_styles.index_info_inner_side} ${index_styles.index_info_R} col-lg-7 col-md-7 col-sm-12 col-xs-12`}
-                >
-                  <div className={`${index_styles.index_info_inner_side_cnt}`}>
-                    <TextWithLinks object={INFO_TEXT_AND_LINKS} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="indexContact" className={`${index_styles.index_contact}`}>
-          <div className={`${index_styles.index_contact_inner}`}>
-            <div
-              className={`${index_styles.index_contact_inner_box} container-fluid`}
-            >
-              <div className={`${index_styles.index_contact_inner_row} row`}>
-                <div
-                  className={`${index_styles.index_contact_inner_side} ${index_styles.index_contact_L} col-lg-7 col-md-7 col-sm-12 col-xs-12`}
-                >
-                  <div
-                    className={`${index_styles.index_contact_inner_side_cnt}`}
-                  >
-                    <TextWithLinks object={CONTACT_TEXT_AND_LINKS} />
-                  </div>
-                </div>
-
-                <div
-                  className={`${index_styles.index_contact_inner_side} ${index_styles.index_contact_R} col-lg-5 col-md-5 col-sm-12 col-xs-12`}
-                >
-                  <div
-                    className={`${index_styles.index_contact_inner_side_cnt}`}
-                  >
-                    <ImageWithIcon object={CONTACT_IMG_ICON_OBJECT} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <FadeRight>
+          <IndexContact
+            imgIconObject={CONTACT_IMG_ICON_OBJECT}
+            textWithLinksObject={CONTACT_TEXT_AND_LINKS}
+          />
+        </FadeRight>
       </div>
     </div>
   );
