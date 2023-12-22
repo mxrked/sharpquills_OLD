@@ -94,6 +94,7 @@ html {
   scroll-behavior: smooth;
   // overflow: hidden; //! For some reason, this fixes the scrolling when mobile nav is opened issue
   // white-space: nowrap;
+  overflow-x: hidden !important;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -114,6 +115,7 @@ body {
   // line-height: 1;
   // overflow: hidden;
   // overflow-y: hidden;
+  overflow-x: hidden !important;
   white-space: nowrap;
   pointer-events: auto;
   // scrollbar-color: #1e2022 #c9d6df;
@@ -172,6 +174,7 @@ select {
   height: 100%;
   opacity: 0;
   visibility: hidden;
+  overflow-x: hidden !important;
 }
 // .page-cnt {
 //   height: 100vh;
