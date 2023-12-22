@@ -17,7 +17,7 @@ import {
   INDEX_INFO_BG,
   INDEX_CONTACT_BG,
 } from "@/assets/cdns/CDNBgs";
-import { HEDGEHOG_3, HEDGEHOG_5, HEDGEHOG_7 } from "@/assets/cdns/CDNIcons";
+import { HEDGEHOG_2, HEDGEHOG_5, HEDGEHOG_7 } from "@/assets/cdns/CDNIcons";
 
 // Component Imports
 import { PageHead } from "@/assets/components/global/All/PageHead";
@@ -26,7 +26,6 @@ import { MobileNav } from "@/assets/components/global/Nav/Mobile/MobileNav";
 import { MobileNavLinks } from "@/assets/components/global/Nav/Mobile/MobileNavLinks";
 
 import { PageFade } from "@/assets/animations/components/PageFade";
-import { FadeLeft } from "@/assets/animations/components/FadeLeft";
 
 import { Top } from "@/assets/components/pages/All/Top.js";
 import { IndexStore } from "@/assets/components/pages/Index/IndexStore";
@@ -34,11 +33,12 @@ import { IndexTypes } from "@/assets/components/pages/Index/IndexTypes";
 import { IndexInfo } from "@/assets/components/pages/Index/IndexInfo";
 import { IndexReviews } from "@/assets/components/pages/Index/IndexReviews";
 import { IndexContact } from "@/assets/components/pages/Index/IndexContact";
-import { FadeRight } from "@/assets/animations/components/FadeRight";
 
 // Style Imports
 import styles from "../assets/styles/modules/Nav/Nav.module.css";
 import index_styles from "../assets/styles/modules/Index/Index.module.css";
+import { FadeLeft } from "@/assets/animations/components/FadeLeft";
+import { FadeRight } from "@/assets/animations/components/FadeRight";
 
 export async function getServerSideProps() {
   const PAGE_HEAD_DATA_DIRECTORY = "public/data/Page_Head_Data/";
@@ -218,7 +218,7 @@ export default function Home({
     id: "indexContactImgAndIcon",
     stylesSrc: index_styles,
     imgSrc: INDEX_CONTACT_BG,
-    iconSrc: HEDGEHOG_3,
+    iconSrc: HEDGEHOG_2,
   };
   const CONTACT_TEXT_AND_LINKS = {
     id: "indexContactTextAndLinks",
@@ -360,34 +360,34 @@ export default function Home({
           <Top object={TOP_OBJECT} />
         </PageFade>
 
-        <FadeRight>
+        <FadeLeft>
           <IndexStore
             imgIconObject={STORE_IMG_ICON_OBJECT}
             textWithLinksObject={STORE_TEXT_AND_LINKS}
           />
-        </FadeRight>
-
-        <FadeLeft>
-          <IndexTypes data={TYPES_DATA} />
         </FadeLeft>
 
         <FadeRight>
+          <IndexTypes data={TYPES_DATA} />
+        </FadeRight>
+
+        <FadeLeft>
           <IndexInfo
             imgIconObject={INFO_IMG_ICON_OBJECT}
             textWithLinksObject={INFO_TEXT_AND_LINKS}
           />
-        </FadeRight>
-
-        <FadeLeft>
-          <IndexReviews data={REVIEWS_DATA} />
         </FadeLeft>
 
         <FadeRight>
+          <IndexReviews data={REVIEWS_DATA} />
+        </FadeRight>
+
+        <FadeLeft>
           <IndexContact
             imgIconObject={CONTACT_IMG_ICON_OBJECT}
             textWithLinksObject={CONTACT_TEXT_AND_LINKS}
           />
-        </FadeRight>
+        </FadeLeft>
       </div>
     </div>
   );
