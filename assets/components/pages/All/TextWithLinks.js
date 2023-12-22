@@ -31,18 +31,20 @@ export const TextWithLinks = (props) => {
         </p>
       ) : null}
 
-      {LINKS.length > 0 ? (
+      {LINKS.length !== 0 ? (
         <ul>
-          {LINKS.map((link) => {
+          {LINKS.map((link) => (
             <li key={link.linkID}>
               <a
+                className={`${
+                  STYLES[link.linkID]
+                } orientation-change-element half-second`}
                 href={link.linkRoute}
-                className="orientation-change-element half-second"
               >
                 <span>{link.linkName}</span>
               </a>
-            </li>;
-          })}
+            </li>
+          ))}
         </ul>
       ) : null}
     </div>
