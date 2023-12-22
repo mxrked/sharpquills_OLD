@@ -1,10 +1,10 @@
 [
   {
     "typeID": "type_A1",
-    "typeFamily": "Test Type Family 1",
-    "typeName": "Test Type Name A1",
-    "typeImg": "HEDGEHOG_3",
-    "typeText": "Test Type Text 1"
+    "typeFamily": "Atelerix",
+    "typeName": "Four-toed Hedgehog",
+    "typeImg": "https://raw.githubusercontent.com/mxrked/freelance_projects_CDN/main/CDN_sharpquills/imgs/atelerix/four-toed.webp",
+    "typeText": "The Four-toed hedgehog (Atelerix albiventris) is a diminutive African species characterized by its distinctive four toes on the hind feet. Native to central and eastern Africa, this nocturnal mammal boasts a spiky coat of quills and has the ability to curl into a protective ball when feeling threatened. Due to its small size and gentle temperament, the Four-toed hedgehog has become a popular choice as an exotic pet."
   },
   {
     "typeID": "type_B1",
