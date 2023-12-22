@@ -24,6 +24,17 @@ export const TypeModal = (props) => {
   const VALID_TEXT = CheckValidObjectProperty(TYPE_TEXT);
   const VALID_MODAL_ID = CheckValidObjectProperty(TYPE_MODAL_ID);
 
+  const CloseModal = () => {
+    RemoveStorageVariable("session", "Modal Opened");
+
+    document.getElementById(TYPE_MODAL_ID).style.overflowY = "hidden";
+    document.getElementById(TYPE_MODAL_ID).style.pointerEvents = "none";
+    document.getElementById(TYPE_MODAL_ID).style.display = "none";
+
+    document.body.style.overflowY = "auto";
+    document.body.style.pointerEvents = "auto";
+  };
+
   return (
     <div>
       {VALID_MODAL_ID ? (
@@ -33,6 +44,7 @@ export const TypeModal = (props) => {
         >
           <div
             className={`${STYLES_SRC.type_modal_darken} type-modal-darken`}
+            onClick={CloseModal}
           />
 
           <div className={`${STYLES_SRC.type_modal_inner}`}>
@@ -60,21 +72,7 @@ export const TypeModal = (props) => {
                   <div className={`${STYLES_SRC.type_modal_inner_side_cnt}`}>
                     {VALID_MODAL_ID ? (
                       <button
-                        onClick={(e) => {
-                          RemoveStorageVariable("session", "Modal Opened");
-
-                          document.getElementById(
-                            TYPE_MODAL_ID
-                          ).style.overflowY = "hidden";
-                          document.getElementById(
-                            TYPE_MODAL_ID
-                          ).style.pointerEvents = "none";
-                          document.getElementById(TYPE_MODAL_ID).style.display =
-                            "none";
-
-                          document.body.style.overflowY = "auto";
-                          document.body.style.pointerEvents = "auto";
-                        }}
+                        onClick={CloseModal}
                         className={`orientation-change-element half-second`}
                       >
                         <span>Close</span>
